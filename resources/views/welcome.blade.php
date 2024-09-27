@@ -16,6 +16,6 @@
         {{-- there is two ways to call the livewire component  --}}
 
     @livewire('clicker')    {{--the first way --}}
-    <livewire:clicker/>    {{-- the second way
+    <livewire:clicker/>    {{-- the second way --}}
     </body>
 </html>

@@ -6,12 +6,11 @@ use Livewire\Component;
 
 class Clicker extends Component
 {
-    // ------------------------------------- first video example
-                // public function clickHandel(){
-                //     dd('clicked');
-                // }
-
-    // ------------------------------------- second video example
+    // ----------------- first video example
+    public function clickHandel()
+    {
+        dd('clicked');
+    }
 
 
 
