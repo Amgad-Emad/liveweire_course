@@ -1,8 +1,9 @@
 <div>
-    {{-- first example   --}}
-    hello form livewire course
-    {{-- second example  --}}
-    <button wire:click="clickHandel">
-        click me
+
+    <h1>{{$user}}</h1>
+    <h1>{{$title}}</h1>
+    {{count($users)}}
+    <button wire:click="CreateNewUser">
+        create new user
     </button>
 </div>

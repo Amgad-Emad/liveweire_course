@@ -13,9 +13,7 @@
 
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-        {{-- there is two ways to call the livewire component  --}}
 
-    @livewire('clicker')    {{--the first way --}}
-    <livewire:clicker/>    {{-- the second way --}}
+    @livewire('clicker')
     </body>
 </html>
