@@ -7,14 +7,15 @@ use Livewire\Component;
 
 class Clicker extends Component
 {
-    // the second way to sending the data to a blade is by making the variable global
-    public  $user="test user";
-    public function CreateNewUser()
+    public  $name;
+    public  $email;
+    public  $password;
+    public function createNewUser()
     {
         User::create([
-            'name'=>'testname',
-            'email'=>'test@email.com',
-            'password'=>'password'
+            'name'=>$this->name,
+            'email'=>$this->email,
+            'password'=>$this->password
         ]);
     }
 
