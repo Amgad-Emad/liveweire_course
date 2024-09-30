@@ -7,36 +7,37 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Clicker extends Component
 {
+    use WithPagination;
+
     #[Rule('required|min:2|max:50')]
-    public  $name='';
+    public  $name = '';
 
     #[Rule('required|email|unique:users')]
-    public  $email='';
+    public  $email = '';
 
     #[Rule('required|min:5')]
-    public  $password='';
+    public  $password = '';
     public function createNewUser()
     {
-        $validated=$this->validate();
+        $validated = $this->validate();
         User::create([
-            'name'=>$validated['name'],
-            'email'=>$validated['email'],
-            'password'=>Hash::make($validated['password'])
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password'])
         ]);
         $this->reset(
-            ['name','email','password']
+            ['name', 'email', 'password']
         );
-        Request()->session()->flash('success','User Created Successfully!');
+        Request()->session()->flash('success', 'User Created Successfully!');
     }
 
     public function render()
     {
-        $title="test";
-        $users=User::all();
-        return view('livewire.clicker',['title'=>$title,'users'=>$users]);
-
+        $users = User::paginate(5);
+        return view('livewire.clicker', ['users' => $users]);
     }
 }
