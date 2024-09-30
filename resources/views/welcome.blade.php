@@ -11,8 +11,9 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
 
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+    <body class="font-sans antialiased ">
 
     @livewire('clicker')
     </body>
