@@ -86,11 +86,12 @@
             @enderror
 
             @if ($image)
-                <img src="{{$image->temporaryUrl()}}" alt="" class="rounded w-10 h-10 mt-5 block">
+                <img src="{{ $image->temporaryUrl() }}" alt="" class="rounded w-10 h-10 mt-5 block">
             @endif
 
             <div wire:loading wire:target="image">
-                <span class="text-green-500">Uploading..</span></div>
+                <span class="text-green-500">Uploading..</span>
+            </div>
         </div>
 
         {{--
@@ -101,9 +102,28 @@
                     class="text-blue-500 font-semibold hover:underline ml-1">Terms and Conditions</a>
             </label>
         </div> --}}
-
+        <div class="">
+            {{-- this is the loading text that show during the loading of the request --}}
+            {{-- <div wire:loading.delay.shortest><span class="text-green-500">sending...</span></div> <!-- 50ms -->
+            <div wire:loading.delay.shorter><span class="text-green-500">sending...</span></div> <!-- 100ms -->
+            <div wire:loading.delay.short><span class="text-green-500">sending...</span></div> <!-- 150ms --> --}}
+            <div wire:loading.delay><span class="text-green-500">sending...</span></div> <!-- 200ms -->
+            {{-- <div wire:loading.delay.long><span class="text-green-500">sending...</span></div> <!-- 300ms -->
+            <div wire:loading.delay.longer><span class="text-green-500">sending...</span></div> <!-- 500ms -->
+            <div wire:loading.delay.longest><span class="text-green-500">sending...</span></div> <!-- 1000ms --> --}}
+        </div>
         <div class="mt-8">
-            <button type="submit"
+            {{-- Remove the button during the loading --}}
+            {{-- <button wire:loading.remove type="submit"
+                class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all">
+                Register
+            </button> --}}
+{{--
+        1-wire:loading.attr="disabled"  ###### this one is important
+        2-wire:loading.class="bg-red-600"
+        3-wire:loading.class.remove="text-white"
+--}}
+            <button wire:loading.class.remove="text-white" wire:loading.class="bg-red-600" wire:loading.attr="disabled" type="submit"
                 class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all">
                 Register
             </button>
