@@ -1,12 +1,12 @@
 <div>
 
     <form wire:submit.prevent='create'
-        class="bg-white max-w-xl w-full mx-auto shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-8 rounded-2xl">
+        class="bg-white max-w-xl w-full mx-auto shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] p-8 rounded-2xl mt-5">
         <div class="mb-12">
-            @if (session('success'))
-                <span class="text-green-500">{{ session('success') }}</span>
-            @endif
             <h3 class="text-gray-800 text-3xl font-bold text-center">Register</h3>
+            @if (session('success'))
+                <span class="text-green-500 text-center block mt-5">{{ session('success') }}</span>
+            @endif
         </div>
 
         <div>
@@ -102,33 +102,28 @@
                     class="text-blue-500 font-semibold hover:underline ml-1">Terms and Conditions</a>
             </label>
         </div> --}}
-        <div class="">
-            {{-- this is the loading text that show during the loading of the request --}}
-            {{-- <div wire:loading.delay.shortest><span class="text-green-500">sending...</span></div> <!-- 50ms -->
-            <div wire:loading.delay.shorter><span class="text-green-500">sending...</span></div> <!-- 100ms -->
-            <div wire:loading.delay.short><span class="text-green-500">sending...</span></div> <!-- 150ms --> --}}
-            <div wire:loading.delay><span class="text-green-500">sending...</span></div> <!-- 200ms -->
-            {{-- <div wire:loading.delay.long><span class="text-green-500">sending...</span></div> <!-- 300ms -->
-            <div wire:loading.delay.longer><span class="text-green-500">sending...</span></div> <!-- 500ms -->
-            <div wire:loading.delay.longest><span class="text-green-500">sending...</span></div> <!-- 1000ms --> --}}
-        </div>
+
+        <div wire:loading.delay>
+            <span class="text-green-500">sending...</span>
+        </div> <!-- 200ms -->
+
         <div class="mt-8">
-            {{-- Remove the button during the loading --}}
-            {{-- <button wire:loading.remove type="submit"
+            {{-- using alpin.js to dispatching an event --}}
+            <button  type="button" @click="$dispatch('user-created')"
                 class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all">
-                Register
+                Reload List
+            </button>
+            {{-- <button  wire:click.prevent="reloadList"
+                class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all">
+                Reload List
             </button> --}}
-{{--
-        1-wire:loading.attr="disabled"  ###### this one is important
-        2-wire:loading.class="bg-red-600"
-        3-wire:loading.class.remove="text-white"
---}}
-            <button wire:loading.class.remove="text-white" wire:loading.class="bg-red-600" wire:loading.attr="disabled" type="submit"
-                class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all">
+
+            <button  wire:loading.attr="disabled"
+                type="submit"
+                class="w-full shadow-xl py-2.5 px-5 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none transition-all mt-5">
                 Register
             </button>
-            <p class="text-gray-800 text-sm mt-8 text-center">Already have an account? <a href="javascript:void(0);"
-                    class="text-blue-500 font-semibold hover:underline ml-1">Login here</a></p>
+
         </div>
     </form>
 </div>

@@ -15,8 +15,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-sans antialiased ">
-    @livewire('register-form')
+<body class="antialiased ">
+    <div class="flex">
+        <div class="w-2/4">
+            @livewire('users-list')
+
+        </div>
+
+        <div class="w-2/4">
+            @livewire('register-form')
+        </div>
+    </div>
 </body>
 
 </html>
